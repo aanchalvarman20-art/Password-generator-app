@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-all duration-300">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body id="body" class="bg-gray-100 min-h-screen flex items-center justify-center transition-all duration-300">
+
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl w-full max-w-md transition-all duration-300">
+    
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold dark:text-white">Password Generator</h1>
+      <button onclick="toggleDarkMode()" class="text-xl">🌙</button>
+    </div>
+
+    <!-- Password Display -->
+    <div class="flex gap-2 mb-2">
+      <input id="passwordOutput" type="text" readonly
+        class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+      <button onclick="copyPassword()" class="bg-green-500 text-white px-3 rounded hover:scale-105 transition">
+        📋
+      </button>
+    </div>
+
+    <!-- Strength Indicator -->
+    <p id="strengthText" class="text-sm font-semibold mb-4">Strength: </p>
+
+    <!-- Length -->
+    <label class="block mb-1 dark:text-white">Password Length</label>
+    <input id="length" type="range" min="4" max="20" value="8"
+      oninput="updateLength(); generatePassword()"
+      class="w-full mb-2">
+    <p class="text-sm mb-4 dark:text-white">Length: <span id="lengthValue">8</span></p>
+
+    <!-- Options -->
+    <div class="space-y-2 mb-4 dark:text-white">
+      <label><input type="checkbox" id="uppercase" checked onchange="generatePassword()"> Uppercase</label><br>
+      <label><input type="checkbox" id="lowercase" checked onchange="generatePassword()"> Lowercase</label><br>
+      <label><input type="checkbox" id="numbers" checked onchange="generatePassword()"> Numbers</label><br>
+      <label><input type="checkbox" id="symbols" onchange="generatePassword()"> Symbols</label>
+    </div>
+
+    <!-- Button -->
+    <button onclick="generatePassword()"
+      class="bg-blue-600 text-white w-full py-2 rounded-lg hover:bg-blue-700 hover:scale-105 transition">
+      Generate Password
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
